@@ -13,10 +13,10 @@ public interface DiscountStrategy {
 
     double getDiscountAmt(double price, int qty);
 
-    double getDiscountRate();
+    double getDiscountValue();
 
     double getDiscountedTotal(double price, int qty);
 
-    void setDiscountRate(double discountRate);
+    void setDiscountValue(double discountValue);
     
 }

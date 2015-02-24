@@ -4,14 +4,14 @@ package student.solution;
  *
  * @author Adam
  */
-public class PercentOffDiscount implements DiscountStrategy {
-    private double discountValue = 0.10;
+public class FlatDiscount implements DiscountStrategy {
+    private double discountValue = 5.00;
 
     //Constructers
-    public PercentOffDiscount() {
+    public FlatDiscount() {
     }
 
-    public PercentOffDiscount(double discountValue) {
+    public FlatDiscount(double discountValue) {
         this.discountValue = discountValue;
     }
     

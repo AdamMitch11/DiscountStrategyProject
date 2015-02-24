@@ -17,7 +17,7 @@ public class FlatDiscount implements DiscountStrategy {
     
     @Override
     public double getDiscountAmt(double price, int qty) {
-        return price*qty*discountValue;
+        return price*qty-discountValue*qty;
     }
     
     @Override
@@ -36,7 +36,7 @@ public class FlatDiscount implements DiscountStrategy {
     }
     
     public static void main(String[] args) {
-        PercentOffDiscount d = new PercentOffDiscount();
+        FlatDiscount d = new FlatDiscount();
         double totalDiscounted = d.getDiscountedTotal(100.00, 2);
         System.out.println(totalDiscounted);
     }

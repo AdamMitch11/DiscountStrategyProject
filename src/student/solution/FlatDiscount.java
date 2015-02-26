@@ -32,7 +32,13 @@ public class FlatDiscount implements DiscountStrategy {
 
     @Override
     public void setDiscountValue(double discountValue) {
+        if (discountValue<0){
+            //throw exception
+            this.discountValue=0.00;
+        }
+        else {
         this.discountValue = discountValue;
+        }
     }
     
     public static void main(String[] args) {

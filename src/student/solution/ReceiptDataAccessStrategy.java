@@ -11,7 +11,7 @@ package student.solution;
  */
 public interface ReceiptDataAccessStrategy {
     
-    public ICustomer findCustomer(final String custId);
+    public CustomerStrategy findCustomer(final String custId);
     
     
 }

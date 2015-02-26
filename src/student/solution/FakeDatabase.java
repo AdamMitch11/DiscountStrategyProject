@@ -1,3 +1,5 @@
+package student.solution;
+
 /**
  * This class provides a temporary solution to the question of where is the
  * long-time data stored. In a real application, a database would be used, 
@@ -10,7 +12,7 @@
  * @version 1.00
  */
 public class FakeDatabase implements ReceiptDataAccessStrategy {
-    private ICustomer[] customers = {
+    private CustomerStrategy[] customers = {
         new Customer("100", "John Smith"),
         new Customer("200", "Sally Jones"),
         new Customer("300", "Bob Clementi")
@@ -30,7 +32,7 @@ public class FakeDatabase implements ReceiptDataAccessStrategy {
      * @return found Customer or null if not found or bad argument
      */
     @Override
-    public final ICustomer findCustomer(final String custId) {
+    public final CustomerStrategy findCustomer(final String custId) {
         // validation is needed for method parameter
         if(custId == null || custId.length() == 0) {
             System.out.println("Sorry, FakeDatabase.findCustomer method has "
@@ -38,7 +40,7 @@ public class FakeDatabase implements ReceiptDataAccessStrategy {
             return null;  // end method prematurely after log to console
         }
         
-        ICustomer customer = null;
+        Customer customer = null;
         for(ICustomer c : customers) {
             if(custId.equals(c.getCustId())) {
                 customer = c;

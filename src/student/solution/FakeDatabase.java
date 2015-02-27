@@ -12,7 +12,7 @@ package student.solution;
  * @version 1.00
  */
 public class FakeDatabase implements ReceiptDataAccessStrategy {
-    private CustomerStrategy[] customers = {
+    private final CustomerStrategy[] customers = {
         new Customer("100", "John Smith"),
         new Customer("200", "Sally Jones"),
         new Customer("300", "Bob Clementi")
@@ -20,10 +20,10 @@ public class FakeDatabase implements ReceiptDataAccessStrategy {
     
 
     
-    private Product[] products = {
-        new Product("A101", "MLB Brewer's Hat ", 19.95, new PercentOffDiscount(0.15)),
-        new Product("B205", "Men's Dress Shirt", 35.50, new QtyDiscount(.10,5)),
-        new Product("C222", "Women's Socks    ", 9.50, new NoDiscount())
+    private final Product[] products = {
+        new Product("A101",  19.95, "MLB Brewer's Hat", new PercentOffDiscount(0.15)),
+        new Product("B205", 35.50, "Men's Dress Shirt", new FlatDiscount(5.50)),
+        new Product("C222", 9.50, "Women's Socks", new NoDiscount())
     };
     
     /**
@@ -40,9 +40,9 @@ public class FakeDatabase implements ReceiptDataAccessStrategy {
             return null;  // end method prematurely after log to console
         }
         
-        Customer customer = null;
-        for(ICustomer c : customers) {
-            if(custId.equals(c.getCustId())) {
+        CustomerStrategy customer = null;
+        for(CustomerStrategy c : customers) {
+            if(custId.equals(c.getCustID())) {
                 customer = c;
                 break;
             }
@@ -52,7 +52,7 @@ public class FakeDatabase implements ReceiptDataAccessStrategy {
     }
     
     /**
-     * Tries to find a Proudct by product id.
+     * Tries to find a Product by product id.
      * @param prodId - must not be null or empty
      * @return found Product or null if not found or bad argument
      */
@@ -67,7 +67,7 @@ public class FakeDatabase implements ReceiptDataAccessStrategy {
         
         Product product = null;
         for(Product p : products) {
-            if(prodId.equals(p.getProdId())) {
+            if(prodId.equals(p.getProductID())) {
                 product = p;
                 break;
             }

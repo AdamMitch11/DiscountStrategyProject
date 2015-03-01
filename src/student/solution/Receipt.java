@@ -21,7 +21,11 @@ public class Receipt {
     }
     
     public void printReceipt() {
-        
+        System.out.println(customer.getName());
+        for (LineItem l : lineItems) {
+            System.out.println(l.getProduct().getName());
+        }
+        System.out.println("Thank you for shopping at Kohls!");
     }
     
     public static void main(String[] args) {
